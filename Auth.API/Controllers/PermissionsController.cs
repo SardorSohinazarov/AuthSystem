@@ -1,5 +1,4 @@
 ﻿using Auth.API.Domain;
-using Auth.API.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Auth.API.Controllers
@@ -11,9 +10,7 @@ namespace Auth.API.Controllers
         private readonly AppDbContext _context;
 
         public PermissionsController(AppDbContext context)
-        {
-            _context = context;
-        }
+            => _context = context;
 
         [HttpGet]
         public async Task<IActionResult> GetPermissionAsync()
@@ -21,13 +18,13 @@ namespace Auth.API.Controllers
             return Ok(_context.Permissions.ToList());
         }
 
-        [HttpPost]
-        public async Task<IActionResult> PostPermissionAsync(string name)
-        {
-            var permission = _context.Permissions.Add(new Permission { Name = name });
-            await _context.SaveChangesAsync();
+        //[HttpPost]
+        //public async Task<IActionResult> PostPermissionAsync(string name)
+        //{
+        //    var permission = _context.Permissions.Add(new Permission { Name = name });
+        //    await _context.SaveChangesAsync();
 
-            return Ok(permission.Entity);
-        }
+        //    return Ok(permission.Entity);
+        //}
     }
 }

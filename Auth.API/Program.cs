@@ -41,7 +41,7 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddScoped<IJWTService, JWTService>();
 
 builder.Services.AddDbContext<AppDbContext>(op =>
-    op.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
+    op.UseNpgsql(builder.Configuration.GetConnectionString("SqlServer")));
 
 builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer(options =>
